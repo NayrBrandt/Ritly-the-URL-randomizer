@@ -1,22 +1,19 @@
 class UrlsController < ApplicationController
 
 	def index
+		@address = Url.new
 	end
 
 	def preview
 	end
 
-	def new
-		@link = Url.new
-	end
-
 	def create
-		new_url = params.require(:link).permit(:address, URL.randomize)
-		new_link = URL.create(new_url)
+		@address = Url.new_random(params[:link])
 		redirect_to :show
 	end
 
-	
+	def show
+	end
 
 
 

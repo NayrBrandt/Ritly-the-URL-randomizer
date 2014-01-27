@@ -1,6 +1,6 @@
-<%= form_for @link do |f| %>
+<%= form_for @address, url: { action: "create" } do |f| %>
 	<div class="form-group">
-        <%= f.text_field :address, placeholder: "Enter a URL to shorten!", class: "text-form" %>
+        <%= f.text_field :link, placeholder: "Enter a URL to shorten!", class: "text-form" %>
     </div>
         <%= f.submit "Shorten!", class: "btn btn-primary btn-color" %>
 <% end %>
