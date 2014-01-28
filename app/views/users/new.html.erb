@@ -1,26 +1,27 @@
-<h1>Sign up</h1>
-
+<div class="container">
 <div class="row">
-  <div class="span6 offset3">
+  <div class ="span6 offset2">
+	<h1>Sign up</h1>
     <%= form_for(@user) do |f| %>
       <% unless @user.errors.count == 0   %>
         <div class="alert alert-error">
           The form contains <%= pluralize(@user.errors.count, "error") %>.
         </div>
         <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li>* <%= msg %></li>
-        <% end %>
+        	<% @user.errors.full_messages.each do |msg| %>
+          		<li>* <%= msg %></li>
+        	<% end %>
         </ul>
       <% end %>
 
       
-      <%= f.text_field :name, :placeholder "Your name" %>
-      <%= f.text_field :email, :placeholder "E-mail address"%>
-      <%= f.password_field :password, :placeholder "Password (6 char minimum)"%>
-      <%= f.password_field :password_confirmation "Retype Password"%>
+      <%= f.text_field :name, placeholder: "Your name" %>
+      <%= f.text_field :email, placeholder: "E-mail address"%>
+      <%= f.password_field :password, placeholder: "Password (6 char minimum)"%>
+      <%= f.password_field :password_confirmation, placeholder: "Retype Password"%>
 
       <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
+</div>
 </div>
