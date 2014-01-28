@@ -12,9 +12,9 @@
 			<li><a href="/">Home</a></li>
 			<li><a href="/about">About</a></li>
 		</ul>
-		<ul class="nav pull-right">
+		<ul class="nav navbar-nav nav-right">
             <% if signed_in? %>
-              <li><%= link_to "My profile", @current_user %></li>
+              <li><%= link_to "My profile", current_user %></li>
               <li>
                 <%= link_to "Sign out", signout_path, method: "delete" %>
               </li>

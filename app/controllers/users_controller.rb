@@ -10,10 +10,10 @@ class UsersController < ApplicationController
 
   def create
   	fancy_user = params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  	@user=User.create(fancy_user)
+  	@user=User.new(fancy_user)
     if @user.save
         flash[:success] = "Welcome to Ritly!"
-        # sign_in @user
+        sign_in @user
         redirect_to @user
     else
         render'new'
