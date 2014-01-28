@@ -1,23 +1,28 @@
 class UrlsController < ApplicationController
 
 	def index
-		@address = Url.new
+		@shorten = Url.new
 	end
 
-	def preview
+	def original
+		checkit = params[:id]
+		sendto = Url.find(checkit)
+		redirect_to "http://#{sendto.link}"
 	end
 
 	def create
 		new_link = params.require(:url).permit(:link)
-		new_link["random_string"] = SecureRandom.urlsafe_base64(6)
-		@address = Url.create(new_link)
-		render :show
 		
+		if (Url.find_by new_link)["link"] == new_link["link"]
+			@shorten = Url.find_by new_link
+		else 
+			new_link["random_string"] = SecureRandom.urlsafe_base64(6)
+			@shorten = Url.create(new_link)
+		end
+		render :show
 	end
 
 	def show
 	end
-
-
 
 end
