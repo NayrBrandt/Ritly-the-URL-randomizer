@@ -15,7 +15,7 @@ class UsersController < ApplicationController
         flash[:success] = "Welcome to Ritly!"
         sign_in @user
         redirect_to @user
-        binding.pry
+      
     else
         render'new'
     end
